@@ -1,0 +1,24 @@
+version: 1
+
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - git clone --depth 1 https://github.com/flutter/flutter.git flutter-sdk
+        - export PATH="$PWD/flutter-sdk/bin:$PATH"
+        - flutter config --enable-web
+        - flutter pub get
+
+    build:
+      commands:
+        - export PATH="$PWD/flutter-sdk/bin:$PATH"
+        - flutter build web --release
+
+  artifacts:
+    baseDirectory: build/web
+    files:
+      - '**/*'
+
+  cache:
+    paths:
+      - .pub-cache/**/*
