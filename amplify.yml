@@ -8,6 +8,9 @@ frontend:
         - export PATH="$PWD/flutter-sdk/bin:$PATH"
         - flutter --version
         - flutter config --enable-web
+        - mkdir -p lib web
+        - cp main.dart lib/main.dart
+        - cp index.html web/index.html
         - flutter pub get
 
     build:
